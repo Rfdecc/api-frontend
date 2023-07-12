@@ -10,8 +10,27 @@ import plusImg from '../../../../assets/circle-plus.svg'
 
 import { Container } from './style'
 
+import styles from './styles.module.css'
+
+import { saveOrder } from '../../../../services/api'
+import { useUser } from '../../../../hooks/useUser'
+
 export function TableDesktop() {
   const { cart, removeSnackFromCart, snackCartIncrement, snackCartDecrement } = useCart()
+
+  const { getAuthUser } = useUser()
+
+  const authUser = getAuthUser()
+
+  const confirmarPedido = () => {
+    //console.log(cart)
+    const order = {
+      username: getAuthUser().username,
+      order: cart,
+    }
+
+    saveOrder(order)
+  }
 
   return (
     <Container>
@@ -58,6 +77,20 @@ export function TableDesktop() {
           ))}
         </tbody>
       </table>
+      <div style={{ margin: 'auto', textAlign: 'center' }}>
+        {authUser.username !== '' && (
+          <button className={styles.confirmarPedido} onClick={confirmarPedido}>
+            Confirmar Pedido
+          </button>
+        )}
+        {authUser.username === '' && (
+          <div style={{ margin: 'auto', textAlign: 'center' }}>
+            <br />
+            <br />
+            <p>Para confirmar seu pedido vc precisa estar logado no sistema.</p>
+          </div>
+        )}
+      </div>
     </Container>
   )
 }

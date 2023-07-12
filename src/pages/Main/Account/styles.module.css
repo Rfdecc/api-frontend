@@ -1,0 +1,35 @@
+.loginForm {
+  margin: auto;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 25vw;
+}
+.loginForm h2 {
+  margin-bottom: 18px;
+}
+.loginForm input {
+  margin-bottom: 36px;
+  padding: 12px;
+}
+.loginForm button {
+  background-color: #e7800b;
+  color: #000000;
+  font-weight: bold;
+  border: none;
+  padding: 12px;
+}
+.loginForm h3 {
+  color: #e7800b;
+  text-decoration: underline;
+  cursor: pointer;
+}
+@media all and (max-width: 500px) {
+  .loginForm {
+    width: 95vw;
+  }
+}
+.logout {
+  cursor: pointer;
+  text-align: underline;
+  color: #e7800b;
+}

@@ -9,21 +9,23 @@ import { AppRoutes } from './routes'
 import { Normalize } from 'styled-normalize'
 import { GlobalStyle } from './styles/global'
 import { Theme } from './styles/Theme'
+import { UserProvider } from './contexts/UserContext'
 
 export default function App() {
   return (
     <BrowserRouter>
       <Theme>
-        <SnackProvider>
-          <CartProvider>
-            <AppRoutes />
-            <ToastContainer autoClose={2000} />
-            <GlobalStyle />
-            <Normalize />
-          </CartProvider>
-        </SnackProvider>
+        <UserProvider>
+          <SnackProvider>
+            <CartProvider>
+              <AppRoutes />
+              <ToastContainer autoClose={2000} />
+              <GlobalStyle />
+              <Normalize />
+            </CartProvider>
+          </SnackProvider>
+        </UserProvider>
       </Theme>
     </BrowserRouter>
   )
 }
-
